@@ -1,5 +1,13 @@
+from re import S
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
+
+def normalize(df):
+    norm = StandardScaler()
+    normalized = norm.fit_transform(df)
+    norm_df = pd.DataFrame(normalized, index=df.index, columns=df.columns)
+    return norm_df
 
 
 def scaler(df):
@@ -34,3 +42,7 @@ def fill_missing_numeric(df, col):
        df[col] = df[col].fillna(df[col].median()) 
     return df
 
+
+def aggregate(df:pd.DataFrame, col, use:list, method:list):
+    df_agg = df.groupby(col).agg({use[i]: method[i] for i in range(len(use))}).reset_index()
+    return df_agg
