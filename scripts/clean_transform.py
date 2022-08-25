@@ -2,6 +2,13 @@ from re import S
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import LabelEncoder
+
+def encode(df, col):
+    encoder = LabelEncoder()
+    df[col] = encoder.fit_transform(df[col])
+    inv = encoder.inverse_transform(df[col])
+    return df[col], inv
 
 def normalize(df):
     norm = StandardScaler()

@@ -113,7 +113,7 @@ def plot_box_multi(df:pd.DataFrame, x_col:str, y_col:str, title:str) -> None:
     plt.title(title, size=20)
     plt.xticks(rotation=75, fontsize=14)
     plt.yticks( fontsize=14)
-    plt.show()
+    # plt.show()
 
 def plot_scatter(df: pd.DataFrame, x_col: str, y_col: str, title: str, hue: str, style: str) -> None:
     plt.figure(figsize=(12, 7))
